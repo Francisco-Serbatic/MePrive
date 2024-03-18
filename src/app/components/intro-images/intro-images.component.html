@@ -1,0 +1,8 @@
+<div class="centered-content">
+    <div class="image-container">
+        <button class="arrow left" (click)="prevImage()">&#9665;</button>
+        <button class="arrow right" (click)="nextImage()">&#9655;</button>
+        <img [src]="getImageUrl(currentImageIndex)" alt="Image" />
+        <button class="overlay-button" (click)="scrollToTarget()">Ir al Menú diario</button> 
+    </div>
+</div>

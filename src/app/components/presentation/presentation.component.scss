@@ -1,0 +1,27 @@
+.presentation {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: justify;
+  }
+
+  .image-container {
+    margin: 20px 0;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .right {
+    float: right;
+    margin-left: 20px; /* Ajusta el margen según sea necesario */
+  }
+
+  .left {
+    float: left;
+    margin-right: 20px; /* Ajusta el margen según sea necesario */
+  }
