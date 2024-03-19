@@ -1,0 +1,17 @@
+{
+  "presentation.title": "Welcome to Our Café",
+  "presentation.paragraph1": "Enjoy our cozy atmosphere and delicious drinks while you work or relax. In our café, we strive to offer the best coffee experience, accompanied by delicious and healthy options.",
+  "presentation.paragraph2": "Our menu includes a wide variety of coffees, teas, and fresh delights. From exquisite specialty coffees to vegetarian and vegan options, we have something for every palate.",
+  "presentation.paragraph3": "We look forward to seeing you soon and providing you with a unique coffee and food experience in our café!",
+  "mealContainer.title": "List of Meals",
+  "mealContainer.mealsNotFound": "No meals could be found",
+  "introImages.menuButton": "Go to Daily Menu",
+  "header.home": "Home",
+  "header.menus": "Menus",
+  "header.breakfasts": "Breakfasts",
+  "header.discover": "Discover Us",
+  "footer.menu": "Try our menu",
+  "footer.phone": "Phone",
+  "footer.reservation": "Reservation",
+  "footer.location": "Location"
+}

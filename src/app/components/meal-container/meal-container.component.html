@@ -1,11 +1,11 @@
 <div>
-  <h2 id="mealContainer">Lista de Comidas</h2>
-  <ul *ngIf="meals;else mealsNotFound">
+  <h2 id="mealContainer" translate="mealContainer.title"></h2>
+  <ul *ngIf="meals; else mealsNotFound">
     <li *ngFor="let meal of meals">
       <app-meal [mealName]="meal.mealName"></app-meal>
     </li>
   </ul>
   <ng-template #mealsNotFound>
-    <p>No se han podido encontrar las comidas</p>
+    <p translate="mealContainer.mealsNotFound"></p>
   </ng-template>
 </div>

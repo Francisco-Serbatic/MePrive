@@ -9,12 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
 
   constructor(private translate: TranslateService) {
-    this.setAppLanguaje();
+    this.setAppLang();
   }
 
-  setAppLanguaje() {
+  setAppLang(): void {
     this.translate.setDefaultLang('en');
-    // this.translate.use(this.translate.getBrowserLang())
+    this.translate.use(this.translate.getBrowserLang()!);
   }
 
   title = 'MePrive';
