@@ -1,5 +1,6 @@
 <form>
-    <label for="userLoginName">Nombre de usuario: </label><input type="text" name="userLoginName" />
-    <label for="userLoginPassword">Contraseña del usuario: </label><input type="password" name="userLoginPassword" />
-    <button (click)="loginUser()">Ir a la página de administrador</button>
-</form>
+    <label for="userLoginName" translate="loginPage.usernameLabel"></label><input type="text" name="userLoginName" />
+    <label for="userLoginPassword" translate="loginPage.passwordLabel"></label><input type="password" name="userLoginPassword" />
+    <button (click)="loginUser()" translate="loginPage.loginButton"></button>
+  </form>
+  

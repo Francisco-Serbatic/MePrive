@@ -1,0 +1,21 @@
+{
+    "presentation.title": "Bienvenido a Nuestra Cafetería",
+    "presentation.paragraph1": "Disfruta de nuestro acogedor ambiente y deliciosas bebidas mientras trabajas o te relajas. En nuestra cafetería, nos esforzamos por ofrecer la mejor experiencia de café, acompañada de opciones deliciosas y saludables.",
+    "presentation.paragraph2": "Nuestro menú incluye una amplia variedad de cafés, tés y delicias frescas. Desde exquisitos cafés de especialidad hasta opciones vegetarianas y veganas, tenemos algo para cada paladar.",
+    "presentation.paragraph3": "¡Esperamos verte pronto y brindarte una experiencia única de café y alimentos en nuestra cafetería!",
+    "mealContainer.title": "Lista de Comidas",
+    "mealContainer.mealsNotFound": "No se han podido encontrar las comidas",
+    "introImages.menuButton": "Ir al menú diario",
+    "header.home": "Inicio",
+    "header.menus": "Menús",
+    "header.breakfasts": "Desayunos",
+    "header.discover": "Descrúbrenos",
+    "footer.menu": "Prueba nuestro menú",
+  "footer.phone": "Teléfono",
+  "footer.reservation": "Reserva",
+  "footer.location": "Ubicación",
+  "loginPage.usernameLabel": "Nombre de usuario:",
+  "loginPage.passwordLabel": "Contraseña del usuario:",
+  "loginPage.loginButton": "Ir a la página de administrador",
+  "adminPage.logout": "Cerrar sesión"
+}
