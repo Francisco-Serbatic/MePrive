@@ -94,6 +94,8 @@
     }
 
     .complementImage {
+      left: auto;
+      right: 0;
       height: 25vh;
       transform: translateY(-50%);
     }

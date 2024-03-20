@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GetImageService } from 'src/app/services/get-image.service';
 import { ScrollInPageService } from 'src/app/services/scroll-in-page.service';
 //import { trigger, transition, animate, style } from '@angular/animations';
 
@@ -21,10 +22,11 @@ import { ScrollInPageService } from 'src/app/services/scroll-in-page.service';
 export class IntroImagesComponent {
   @Input() mealsUrl: string | undefined;
 
-  images: string[] = ['prive01.jpg', 'prive02.jpg', 'prive03.jpg'];
+  carouselImages: string[] = ['prive01.jpg', 'prive02.jpg', 'prive03.jpg'];
+  arrowImages: string[] = [this.getImagesByName.getImageUrl('leftArrow.png'), this.getImagesByName.getImageUrl('rightArrow.png')]
   currentImageIndex: number = 0;
 
-  constructor(private scroller: ScrollInPageService) { }
+  constructor(private scroller: ScrollInPageService, private getImagesByName: GetImageService) { }
 
   ngOnInit() {
     this.rotateImages();
@@ -37,21 +39,17 @@ export class IntroImagesComponent {
   }
 
   nextImage() {
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.carouselImages.length;
   }
 
   prevImage() {
-    this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+    this.currentImageIndex = (this.currentImageIndex - 1 + this.carouselImages.length) % this.carouselImages.length;
   }
 
   scrollTo = this.scroller.scrollToTarget;
 
-  getImageUrl(indexOrName: number | string): string {
-    if (typeof indexOrName == 'number')
-    {
-      return `../../../../assets/${this.images[indexOrName]}`;
-    } else  {
-      return `../../../assets/${indexOrName}`;
-    }
+  getImageUrl(index: number): string {
+    return this.getImagesByName.getImageUrl(this.carouselImages[index])
   }
+
 }

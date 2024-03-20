@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { GetImageService } from 'src/app/services/get-image.service';
 import { ScrollInPageService } from 'src/app/services/scroll-in-page.service';
 
 @Component({
@@ -7,13 +8,13 @@ import { ScrollInPageService } from 'src/app/services/scroll-in-page.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  logoUrl = "../../../assets/prive-eventos-catering-logo-blanco.png";
+  logoUrl = this.getImageUrl.getImageUrl('logoBlanco.png');
   // isScrolledDown = false;
   // isScrolledUp = true;
   // lastScrollTop = 0;
   
 
-  constructor(private scroller: ScrollInPageService) { }
+  constructor(private scroller: ScrollInPageService, private getImageUrl: GetImageService) { }
 
   // @HostListener('window:scroll', ['$event'])
   // onWindowScroll() {

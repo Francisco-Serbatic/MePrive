@@ -1,7 +1,7 @@
 <div class="centered-content">
     <div class="image-container">
-        <button class="arrow left" (click)="prevImage()"><img [src]="getImageUrl('leftArrow.png')" /></button>
-        <button class="arrow right" (click)="nextImage()"><img [src]="getImageUrl('rightArrow.png')" /></button>
+        <button class="arrow left" (click)="prevImage()"><img [src]="arrowImages[0]" /></button>
+        <button class="arrow right" (click)="nextImage()"><img [src]="arrowImages[1]" /></button>
         <img [src]="getImageUrl(currentImageIndex)" alt="Image" />
         <button class="overlay-button" (click)="scrollTo('#mealContainer')" translate="introImages.menuButton"></button> 
     </div>

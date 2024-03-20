@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetImageService } from 'src/app/services/get-image.service';
 
 @Component({
   selector: 'app-presentation',
@@ -7,8 +8,9 @@ import { Component } from '@angular/core';
 })
 export class PresentationComponent {
 
+  mainImageUrl = this.getImageUrl.getImageUrl('prive04.jpg');
+  complementImageUrl = this.getImageUrl.getImageUrl('cofeeWithCroassant.png');
 
-  getImageUrl(indexOrName: string): string {
-      return `../../../assets/${indexOrName}`;
-  }
+  constructor(private getImageUrl: GetImageService) { }
+
 }
