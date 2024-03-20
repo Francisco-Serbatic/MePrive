@@ -1,27 +1,101 @@
 .presentation {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: justify;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+.title {
+  text-align: center;
+  margin: 20px;
+}
+
+.presentation-content {
+  max-width: 80%;
+  grid-template-columns: 1fr;
+  display: grid;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.double-image-container {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  overflow: hidden;
+  height: 55vh;
+
+  .mainImage {
+    position: absolute;
+    height: 80%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    object-fit: cover;
   }
 
-  .image-container {
-    margin: 20px 0;
+  .complementImage {
+    height: 25vh;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+}
+
+.presentation-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+
+  h3 {
     text-align: center;
-    overflow: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
   }
 
-  img {
-    max-width: 100%;
-    border-radius: 8px;
+  p {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
+
+
+.right {
+  float: right;
+  margin-left: 20px;
+}
+
+.left {
+  float: left;
+  margin-right: 20px;
+}
+
+@media (min-width: 700px) {
+  .presentation-content {
+    margin: 20px;
+    max-width: 1600px;
+    grid-template-columns: 55% 45%;
+    grid-gap: 50px;
   }
 
-  .right {
-    float: right;
-    margin-left: 20px; /* Ajusta el margen según sea necesario */
-  }
+  .double-image-container {
+    .mainImage {
+      height: 100%;
+      width: 70%;
+    }
 
-  .left {
-    float: left;
-    margin-right: 20px; /* Ajusta el margen según sea necesario */
+    .complementImage {
+      height: 25vh;
+      transform: translateY(-50%);
+    }
   }
+}

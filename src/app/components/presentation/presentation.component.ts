@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class PresentationComponent {
 
+
+  getImageUrl(indexOrName: string): string {
+      return `../../../assets/${indexOrName}`;
+  }
 }

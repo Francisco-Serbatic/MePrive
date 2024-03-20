@@ -1,12 +1,13 @@
 <div class="presentation">
-  <h1 translate="presentation.title"></h1>
-  <p translate="presentation.paragraph1"></p>
-  <div class="image-container right">
-    <img src="prive03.jpg" alt="Cafetería Imagen 1" />
+  <h1 class="title" translate="presentation.title"></h1>
+  <div class="presentation-content">
+    <div class="double-image-container">
+      <img class="mainImage" [src]="getImageUrl('prive04.jpg')" alt="Cafetería Imagen 1" />
+      <img class="complementImage" [src]="getImageUrl('cofeeWithCroassant.png')" alt="Cafetería Imagen 2" />
+    </div>
+    <div class="presentation-text">
+      <h3 translate="presentation.textTitle"></h3>
+      <p translate="presentation.text"></p>
+    </div>
   </div>
-  <p translate="presentation.paragraph2"></p>
-  <div class="image-container left">
-    <img src="prive04.jpg" alt="Cafetería Imagen 2" />
-  </div>
-  <p translate="presentation.paragraph3"></p>
 </div>
