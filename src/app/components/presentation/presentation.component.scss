@@ -50,7 +50,7 @@
 
 .presentation-text {
   height: 100%;
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -92,12 +92,15 @@
       height: 100%;
       width: 70%;
     }
-
     .complementImage {
       left: auto;
       right: 0;
       height: 25vh;
       transform: translateY(-50%);
     }
+  }
+  .presentation-text {
+  width: 80%;
+
   }
 }

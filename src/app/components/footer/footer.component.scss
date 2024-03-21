@@ -1,18 +1,25 @@
 .footer {
     background-color: black;
     color: white;
-    padding: 20px;
+    padding: 40px;
 }
 
 .footer-content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .footer-item {
+    text-align: center;
     flex: 1;
     text-align: center;
-    margin: 0 10px;
+    margin: 0 40px;
+    padding: 10px;
+    border-radius: 3px;
+}
+.footer-item:hover {
+    cursor: pointer;
+    background-color: #333;
 }
 
 #map {

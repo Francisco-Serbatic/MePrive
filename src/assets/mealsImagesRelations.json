@@ -1,0 +1,20 @@
+{
+    "imagesAndWords": [
+        {
+            "svg": "./svgs/hamburger.svg",
+            "names": ["hamburger", "sandwich", "bocadillo", "bocata"]
+        },
+        {
+            "svg": "./svgs/pizza.svg",
+            "names": ["pizza", "calzone", "focaccia", "stromboli", "flatbread", "lahmacun", "pide", "manakish", "tarte flambée", "coca"]
+        }, 
+        {
+            "svg": "./svgs/bowlMeal.svg",
+            "names": ["pizza", "calzone", "focaccia", "stromboli", "flatbread", "lahmacun", "pide", "manakish", "tarte flambée", "coca"]
+        },
+        {
+            "svg": "./svgs/flatDishMeal.svg",
+            "names": ["pizza", "calzone", "focaccia", "stromboli", "flatbread", "lahmacun", "pide", "manakish", "tarte flambée", "coca"]
+        }
+    ]
+}

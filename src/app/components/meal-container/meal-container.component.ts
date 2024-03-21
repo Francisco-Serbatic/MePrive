@@ -13,6 +13,7 @@ export class MealContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMeals();
+    this.getMealType();
   }
 
   getMeals(): void {
@@ -24,6 +25,13 @@ export class MealContainerComponent implements OnInit {
         },
         error => console.error('Error:', error)
       );
+  }
+
+  getMealType(): void {
+    this.jsonService.getMealsImagesRelations()
+      .subscribe({
+        next: (mealTypes) => {console.log(typeof(mealTypes))}
+      });
   }
 
   

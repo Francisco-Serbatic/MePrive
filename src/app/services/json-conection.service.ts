@@ -19,6 +19,10 @@ export class JsonConectionService {
       );
   }
 
+  getMealsImagesRelations(): Observable<any> {
+    return this.http.get<any>('assets/mealsImagesRelations.json');
+  }
+
   private handleError(error: HttpErrorResponse): Observable<any> {
     console.error('An error occurred:', error);
     throw error;
