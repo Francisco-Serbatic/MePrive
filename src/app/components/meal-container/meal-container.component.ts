@@ -13,34 +13,18 @@ export class MealContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMeals();
-    this.getMealType();
   }
 
   getMeals(): void {
     this.jsonService.getMeals()
-      .subscribe(
-        meals => {
+      .subscribe({
+        next: (meals) => {
           this.meals = meals;
-          console.log('Meals:', this.meals);
+          
         },
-        error => console.error('Error:', error)
+        error: (error) => console.error('Error:', error)
+      }
+        
       );
   }
-
-  getMealType(): void {
-    this.jsonService.getMealsImagesRelations()
-      .subscribe({
-        next: (mealTypes) => {console.log(typeof(mealTypes))}
-      });
-  }
-
-  
-  // addMeal(mealName: string)
-  // {
-  //   this.mealsArray.push(mealName);
-  // }
-  // removeMeal(mealIndex: number)
-  // {
-  //   this.mealsArray.splice(mealIndex, 1)
-  // }
 }

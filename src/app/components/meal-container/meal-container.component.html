@@ -1,8 +1,10 @@
 <div class="allContent">
   <h1 id="mealContainer" translate="mealContainer.title"></h1>
   <ul *ngIf="meals; else mealsNotFound">
-    <li *ngFor="let meal of meals">
-      <app-meal [mealName]="meal.mealName"></app-meal>
+    <li *ngFor="let meal of meals;  let i = index">
+      <div id="pruebitas" *ngIf="i==3">
+      </div>
+      <app-meal [mealName]="meal.mealName" [mealPrice]="meal.price"></app-meal>
     </li>
   </ul>
   <ng-template #mealsNotFound>

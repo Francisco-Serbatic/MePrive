@@ -1,12 +1,17 @@
 .footer {
+    display: flex;
+    align-items: center;
+    align-items: center;
     background-color: black;
     color: white;
     padding: 40px;
 }
 
 .footer-content {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer-item {
@@ -26,4 +31,9 @@
     width: 100%;
     height: 300px;
     /* Puedes ajustar la altura según tus necesidades */
+}
+@media (min-width: 700px) {
+    .footer {
+        height: 8vh;
+    }
 }

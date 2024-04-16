@@ -1,21 +1,45 @@
 {
-  "presentation.title": "Welcome to Our Café",
-  "presentation.paragraph1": "Enjoy our cozy atmosphere and delicious drinks while you work or relax. In our café, we strive to offer the best coffee experience, accompanied by delicious and healthy options.",
-  "presentation.paragraph2": "Our menu includes a wide variety of coffees, teas, and fresh delights. From exquisite specialty coffees to vegetarian and vegan options, we have something for every palate.",
-  "presentation.paragraph3": "We look forward to seeing you soon and providing you with a unique coffee and food experience in our café!",
-  "mealContainer.title": "List of Meals",
-  "mealContainer.mealsNotFound": "No meals could be found",
-  "introImages.menuButton": "Go to Daily Menu",
-  "header.home": "Home",
-  "header.menus": "Menus",
-  "header.breakfasts": "Breakfasts",
-  "header.discover": "Discover Us",
-  "footer.menu": "Try our menu",
-  "footer.phone": "Phone",
-  "footer.reservation": "Reservation",
-  "footer.location": "Location",
-  "loginPage.usernameLabel": "Username:",
-  "loginPage.passwordLabel": "User Password:",
-  "loginPage.loginButton": "Go to Admin Page",
-  "adminPage.logout": "Log Out"
+  "presentation": {
+    "title": "Welcome to Our Café",
+    "paragraph1": "Enjoy our cozy atmosphere and delicious beverages while you work or relax. In our café, we strive to offer the best coffee experience, accompanied by delicious and healthy options.",
+    "paragraph2": "Our menu includes a wide variety of coffees, teas, and fresh delights. From exquisite specialty coffees to vegetarian and vegan options, we have something for every palate.",
+    "paragraph3": "We look forward to seeing you soon and providing you with a unique coffee and food experience at our café!",
+    "textTitle": "I indulged",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+  },
+  "mealContainer": {
+    "title": "List of Meals",
+    "mealsNotFound": "Meals not found"
+  },
+  "introImages": {
+    "menuButton": "Go to Daily Menu"
+  },
+  "header": {
+    "home": "Home",
+    "menus": "Menus",
+    "breakfasts": "Breakfasts",
+    "discover": "Discover Us"
+  },
+  "footer": {
+    "menu": "Try our menu",
+    "phone": "Phone",
+    "reservation": "Reservation",
+    "location": "Location"
+  },
+  "login": {
+    "usernameLabel": "Username:",
+    "passwordLabel": "Password:",
+    "loginButton": "Go to Admin Page"
+  },
+  "adminPage": {
+    "logout": "Log out"
+  },
+  "menu": {
+    "menuName": "Menu name",
+    "date": "Date",
+    "price": "Price",
+    "dishInputPlaceholder": "Dish name",
+    "deleteBtn": "Delete"
+
+  }
 }

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { IntroImagesComponent } from './components/intro-images/intro-images.component';
 import { MealComponent } from './components/meal/meal.component';
@@ -15,9 +16,13 @@ import { PresentationComponent } from './components/presentation/presentation.co
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BreakfastPresentationComponent } from './components/breakfast-presentation/breakfast-presentation.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { BreakfastsComponent } from './components/breakfasts/breakfasts.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LunchMenuComponent } from './components/lunch-menu/lunch-menu.component';
+import { PruebaFormsComponent } from './components/prueba-forms/prueba-forms.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,14 +39,19 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomePageComponent,
     FooterComponent,
     HeaderComponent,
-    BreakfastPresentationComponent,
     LoginPageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    BreakfastsComponent,
+    LoginFormComponent,
+    LunchMenuComponent,
+    PruebaFormsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

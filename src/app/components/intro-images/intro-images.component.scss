@@ -20,7 +20,7 @@
 
 
 .overlay-button {
-  background-color: #804a41; 
+  background-color: #4E312D; 
   color: #ffffff; 
   font-weight: bold;
   position: absolute;
@@ -31,11 +31,12 @@
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  transition: font-size 0.4s;
+  transition: font-size 0.5s;
+  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5); 
   
 }
 .overlay-button:hover {
-  background-color: #9d6961;
+  background-color: #704d48;
   font-size: 1.03rem;
 }
 .arrow {
@@ -67,6 +68,6 @@
 
 @media (min-width: 700px) {
   .image-container{
-    height: 85vh;
+    height: 92vh;
   }
 }
