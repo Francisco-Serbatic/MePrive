@@ -1,4 +1,13 @@
 {
+  "date": {
+    "day1": "Lunes",
+    "day2": "Martes",
+    "day3": "Miércoles",
+    "day4": "Jueves",
+    "day5": "Viernes",
+    "day6": "Sábado",
+    "day7": "Domingo"    
+  },
   "presentation": {
     "title": "Bienvenido a Nuestra Cafetería",
     "paragraph1": "Disfruta de nuestro acogedor ambiente y deliciosas bebidas mientras trabajas o te relajas. En nuestra cafetería, nos esforzamos por ofrecer la mejor experiencia de café, acompañada de opciones deliciosas y saludables.",
@@ -17,7 +26,7 @@
   "header": {
     "home": "Inicio",
     "menus": "Menús",
-    "breakfasts": "Desayunos",
+    "orders": "Mis pedidos",
     "discover": "Descrúbrenos"
   },
   "footer": {

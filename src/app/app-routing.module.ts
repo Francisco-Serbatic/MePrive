@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 
 const routes: Routes = [
   { // Esto te redirije ahome si tinenes la ruta vacia
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+  path: 'orders',
+    component: OrdersPageComponent
   },
   {
     path: 'admin',

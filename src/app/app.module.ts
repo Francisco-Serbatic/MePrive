@@ -22,6 +22,9 @@ import { BreakfastsComponent } from './components/breakfasts/breakfasts.componen
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { LunchMenuComponent } from './components/lunch-menu/lunch-menu.component';
 import { PruebaFormsComponent } from './components/prueba-forms/prueba-forms.component';
+import { ConfirmationComponentComponent } from './components/confirmation-component/confirmation-component.component';
+import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
+import { ExtensibleFormComponent } from './components/extensible-form/extensible-form.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,7 +47,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     BreakfastsComponent,
     LoginFormComponent,
     LunchMenuComponent,
-    PruebaFormsComponent
+    PruebaFormsComponent,
+    ConfirmationComponentComponent,
+    OrdersPageComponent,
+    ExtensibleFormComponent
   ],
   imports: [
     BrowserModule,

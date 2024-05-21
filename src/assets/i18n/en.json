@@ -1,4 +1,13 @@
 {
+  "date": {
+    "day1": "Monday",
+    "day2": "Tuesday",
+    "day3": "Wednesday",
+    "day4": "Thursday",
+    "day5": "Friday",
+    "day6": "Saturday",
+    "day0": "Sunday"    
+  },
   "presentation": {
     "title": "Welcome to Our Café",
     "paragraph1": "Enjoy our cozy atmosphere and delicious beverages while you work or relax. In our café, we strive to offer the best coffee experience, accompanied by delicious and healthy options.",
@@ -17,7 +26,7 @@
   "header": {
     "home": "Home",
     "menus": "Menus",
-    "breakfasts": "Breakfasts",
+    "orders": "My orders",
     "discover": "Discover Us"
   },
   "footer": {

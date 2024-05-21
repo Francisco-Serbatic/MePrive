@@ -1,0 +1,115 @@
+form {
+    background-color: #e3e3e3;
+    padding: 10px;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    position: relative;
+    border: none;
+
+    &::after {
+        content: attr(lang);
+        position: absolute;
+        left: 50%;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgb(168, 7, 7);
+        padding: 4px 8px;
+        border-radius: 5px;
+        transition: .1s linear;
+        transition-delay: .2s;
+        color: white;
+        text-transform: uppercase;
+        font-size: 12px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .icon {
+        transform: scale(1.2);
+        transition: .2s linear;
+    }
+
+    &:hover>.icon {
+        transform: scale(1.5);
+    }
+
+    &:hover>.icon path {
+        fill: rgb(168, 7, 7);
+    }
+
+    &:hover::after {
+        visibility: visible;
+        opacity: 1;
+        left: 115%;
+    }
+}
+
+.addBtn {
+    color: #090909;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 5px 5px 8px #c5c5c5, -6px -6px 12px #ffffff;
+    margin-bottom: 9px;
+
+
+    &:hover {
+        border: 1px solid white;
+    }
+
+    &:active {
+        box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+    }
+
+}
+
+.verticalFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrollable-container {
+    max-height: 500px;
+    overflow-y: auto;
+    width: 600px
+}
+
+.styled-input {
+    position: relative;
+    min-width: 100px;
+    cursor: text;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 16px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #d6d6e7;
+    border-radius: 3px;
+    color: rgb(35, 38, 59);
+    box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+    overflow: auto;
+    transition: all 100ms ease-in-out;
+    margin: 4px;
+  }
+  
+  .styled-input:focus {
+    border-color: #3c4fe0;
+    box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
+  }
+  
+  .resize-input {
+    min-width: 100px;
+    /* Set a minimum width */
+  }
+  
+  .resize-input::-webkit-scrollbar {
+    display: none;
+  }
+  
