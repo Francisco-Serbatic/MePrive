@@ -27,7 +27,7 @@ export class DishAPIService {
 
   getDishesByDate(date: Date): Observable<Dish | null> {
     const dateString = this.dateManger.formatDate(date);
-    const url = `${this.dishUrl}/${dateString}`;
+    const url = `${this.dishUrl}/date/${dateString}`;
     return this.http.get<Dish | null>(url);
   }
 
@@ -36,24 +36,37 @@ export class DishAPIService {
     return this.http.get<Menu | null>(url);
   }
 
-  getTodayMenu() {
+  getTodayMenu(): Observable<Menu | null> {
     const url = `${this.menuUrl}/today`;
-    return this.http.get(url);
+    return this.http.get<Menu | null>(url);
+  }
+
+  getMenuByDate(date: Date): [Date, Observable<Menu>] {
+    const dateString: string = this.dateManger.formatDate(date);
+    const url: string = `${this.menuUrl}/${dateString}`;
+    return [date, this.http.get<Menu>(url)];
   }
 
   /**
-   * 
-   * @returns Hace 7 consultas y te las va devolviendo por orden
+   * It does 7 get and returns them by order
+   * @returns concat de o
    */
-  getWeekMenus(): Observable<Menu> {
+  getWeekMenus(): Observable<Date | Observable<Menu>> {
     const week: Date[] = this.dateManger.getNextWeek();
     const observables = week.map(day => this.getMenuByDate(day));
     return concat(...observables);
   }
 
-  getMenuByDate(date: Date): Observable<any> {
-    const dateString: string = this.dateManger.formatDate(date);
-    const url: string = `${this.menuUrl}/${dateString}`;
-    return this.http.get(url);
+  postNewDish(data: Dish): Observable<Dish> {
+    return this.http.post<Dish>(this.dishUrl, data)
   }
+
+  postNewMenu(price: number , date: Date ) {
+     return this.http.post<Dish>(this.menuUrl, {"price": price, "date": this.dateManger.formatDate(date)})
+  }
+
+  deleteDish(id: number) {
+    return this.http.delete(this.dishUrl+"/delete/"+id)
+  }
+
 }

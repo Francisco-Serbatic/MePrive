@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { IntroImagesComponent } from './components/intro-images/intro-images.component';
 import { MealComponent } from './components/meal/meal.component';
-import { MealContainerComponent } from './components/meal-container/meal-container.component';
 import { PresentationComponent } from './components/presentation/presentation.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,11 +19,12 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { BreakfastsComponent } from './components/breakfasts/breakfasts.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { LunchMenuComponent } from './components/lunch-menu/lunch-menu.component';
-import { PruebaFormsComponent } from './components/prueba-forms/prueba-forms.component';
 import { ConfirmationComponentComponent } from './components/confirmation-component/confirmation-component.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
 import { ExtensibleFormComponent } from './components/extensible-form/extensible-form.component';
+import { AdminMenuTabsComponent } from './components/admin-menu-tabs/admin-menu-tabs.component';
+import { MealContainerComponent } from './components/meal-container/meal-container.component';
+import { OrdersFormComponent } from './components/orders-form/orders-form.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +36,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     IntroImagesComponent,
     MealComponent,
-    MealContainerComponent,
     PresentationComponent,
     PresentationComponent,
     HomePageComponent,
@@ -46,11 +45,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminPageComponent,
     BreakfastsComponent,
     LoginFormComponent,
-    LunchMenuComponent,
-    PruebaFormsComponent,
     ConfirmationComponentComponent,
     OrdersPageComponent,
-    ExtensibleFormComponent
+    ExtensibleFormComponent,
+    AdminMenuTabsComponent,
+    MealContainerComponent,
+    OrdersFormComponent
   ],
   imports: [
     BrowserModule,

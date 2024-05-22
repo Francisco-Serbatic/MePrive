@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonConectionService } from 'src/app/services/json-conection.service';
+import { Dish } from 'src/app/models/dish';
+import { Menu } from 'src/app/models/menu';
+import { DishAPIService } from 'src/app/services/dish-api.service';
 
 @Component({
   selector: 'app-meal-container',
@@ -7,24 +9,23 @@ import { JsonConectionService } from 'src/app/services/json-conection.service';
   styleUrls: ['./meal-container.component.scss']
 })
 export class MealContainerComponent implements OnInit {
-  meals!: any[];
+  meals!: Dish[];
 
-  constructor(private jsonService: JsonConectionService) { }
+  constructor(private apiConection: DishAPIService) { }
 
   ngOnInit(): void {
-    this.getMeals();
+    this.setMeals();
   }
 
-  getMeals(): void {
-    this.jsonService.getMeals()
-      .subscribe({
-        next: (meals) => {
-          this.meals = meals;
-          
-        },
-        error: (error) => console.error('Error:', error)
-      }
-        
-      );
+  setMeals(): void {
+    this.apiConection.getTodayMenu().subscribe({
+      next: (meals) => {
+        if (meals != null)  this.meals = meals.dishes
+        else this.meals = [];
+      },
+      error: (error) => console.error('Error:', error)
+    })
   }
+
 }
+

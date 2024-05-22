@@ -13,11 +13,18 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     let token = sessionStorage.getItem('token');
 
-    if (token) {
+    if (token == "asd") {
+      this.router.navigate(['orders']);
+    }
+    else {
       this.router.navigate(['admin']);
     }
   }
 
+  loginAdmin() {
+    sessionStorage.setItem('token', 'asd');
+    this.router.navigate(['orders']);
+  }
   loginUser() {
     sessionStorage.setItem('token', '123456789');
     this.router.navigate(['admin']);

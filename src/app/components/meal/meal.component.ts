@@ -12,7 +12,7 @@ import { GetImageService } from 'src/app/services/get-image.service';
 })
 export class MealComponent implements OnInit {
   @Input({ required: true }) mealName!: string;
-  @Input({ required: true }) mealPrice!: string;
+  @Input({ required: true }) mealPrice!: number;
   // 10 images: bowl, egg, fish, glass, iceCream, pipe, pizza, plate, salad, sandwich
   mealImageName: string = "./../../../assets/svgs/plate.svg";
   mealImageMealTypeRelation: MealTypeGrouper = {
@@ -42,36 +42,37 @@ export class MealComponent implements OnInit {
     this.edamamService.searchRecipesByName(mealName)
       .subscribe({
         next: (mealTypes) => {
-          this.setMealImageName(mealTypes.hits[1].recipe.dishType.toString());
-          console.log(mealTypes);
-          let healthLabels = mealTypes.hits[1].recipe.healthLabels;
-          this.allergiesFounded = this.allergenFreeFinder(healthLabels);
-          this.tipesOfDiet[0] = this.typeOfDietFinder(healthLabels);
-          console.log(this.tipesOfDiet[0]);
+          if (mealTypes.hits.length == 0) {
+            console.log("Te has inventado la receta colega")
+          }
+          else {
+            console.log(mealTypes)
+            this.setMealImageName(mealTypes.hits[1].recipe.dishType.toString());
+            let healthLabels = mealTypes.hits[1].recipe.healthLabels;
+            this.allergiesFounded = this.allergenFreeFinder(healthLabels);
+            this.tipesOfDiet[0] = this.typeOfDietFinder(healthLabels);
+            console.log(this.tipesOfDiet[0]);
+          }
         },
         error: (error) => console.error('Error:', error)
       });
   }
 
-  allergenFreeFinder(healthLabels: string[]): string[]{
+  allergenFreeFinder(healthLabels: string[]): string[] {
     let allergiesFounded: string[] = []
     this.allergiesHealthLabels.forEach((allergy) => {
-      if (!healthLabels.includes(allergy)) 
-      {
+      if (!healthLabels.includes(allergy)) {
         allergiesFounded.push(allergy.split('-')[0]);
       }
     })
     return allergiesFounded;
   }
 
-  typeOfDietFinder(healthLabels: string[]): string
-  {
+  typeOfDietFinder(healthLabels: string[]): string {
     let foundType: string = '';
-    for (let i=0; i<this.tipesOfDiet.length-1; i++)
-    {
+    for (let i = 0; i < this.tipesOfDiet.length - 1; i++) {
       this.tipesOfDiet.forEach((type) => {
-        if (healthLabels.includes(type)) 
-        {
+        if (healthLabels.includes(type)) {
           foundType = type;
         }
       })
@@ -80,7 +81,7 @@ export class MealComponent implements OnInit {
   }
 
   setMealImageName(name: string) {
-    this.mealImageName = name.split(',')[name.split(',').length -1];
+    this.mealImageName = name.split(',')[name.split(',').length - 1];
     Object.keys(this.mealImageMealTypeRelation).forEach(key => {
       let values = this.mealImageMealTypeRelation[key];
 
@@ -88,13 +89,12 @@ export class MealComponent implements OnInit {
         if (value.includes(this.mealImageName)) {
           this.mealImageName = key + '.svg';
           this.mealImageName = this.imageUrlService.getSvgUrl(this.mealImageName);
-          //TODO Stop the foreach
         }
       });
     });
   }
 
   getSvgImage(name: string): string {
-    return this.imageUrlService.getSvgUrl(name+'.svg')
+    return this.imageUrlService.getSvgUrl(name + '.svg')
   }
 }

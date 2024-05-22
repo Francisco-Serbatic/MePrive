@@ -1,13 +1,14 @@
 <div class="allContent">
-  <h1 id="mealContainer" translate="mealContainer.title"></h1>
-  <ul *ngIf="meals; else mealsNotFound">
-    <li *ngFor="let meal of meals;  let i = index">
-      <div id="pruebitas" *ngIf="i==3">
-      </div>
-      <app-meal [mealName]="meal.mealName" [mealPrice]="meal.price"></app-meal>
-    </li>
-  </ul>
-  <ng-template #mealsNotFound>
-    <p translate="mealContainer.mealsNotFound"></p>
-  </ng-template>
-</div>
+    <h1 id="mealContainer" translate="mealContainer.title"></h1>
+    <ul *ngIf="meals; else mealsNotFound">
+      <li *ngFor="let meal of meals;  let i = index">
+        <div id="pruebitas" *ngIf="i==3">
+        </div>
+        <app-meal [mealName]="meal.name" [mealPrice]="meal.price"></app-meal>
+      </li>
+    </ul>
+    <ng-template #mealsNotFound>
+      <p translate="mealContainer.mealsNotFound"></p>
+    </ng-template>
+  </div>
+  

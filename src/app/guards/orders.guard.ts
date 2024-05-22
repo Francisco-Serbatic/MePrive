@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class ordersGuard implements CanActivate {
 
   constructor(private router: Router) { }
 
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       if (token) {
         return true;
       } else {
-        this.router.navigate(['login']);
+        this.router.navigate(['orders']);
         return false;
       }
 
@@ -30,6 +30,3 @@ export class AuthGuard implements CanActivate {
     }
 
 }
-  
-
-

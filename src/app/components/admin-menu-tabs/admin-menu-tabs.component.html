@@ -1,0 +1,33 @@
+<div class="tabs-container verticalFlex">
+  <div class="tabs">
+    <div *ngFor="let tab of tabs; let i = index" class="tab" [class.active]="i === activeTab" (click)="changeTab(i)">
+      {{ tab | translate }}
+    </div>
+  </div>
+</div>
+<div class="tab-content verticalFlex" *ngFor="let tab of tabs; let i = index" [class.active]="i === activeTab">
+  <div *ngIf="i === activeTab">
+    <app-extensible-form *ngIf="apiDataReceived && !apiError; else loadingData" [inputsArray]="getDefaultMeals(week[i])"
+      [day]="week[i]" [menuPrice]></app-extensible-form>
+
+    <ng-template #loadingData>
+      <div *ngIf="!apiError; else apiErrorOcurred" class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+      </div>
+      <ng-template #apiErrorOcurred>
+        <div class="verticalFlex">
+          <p style="color: red;">{{"apiPetition.error" | translate}}</p>
+          <button type="button" class="formBtn" (click)="setDefaultInputs()"> {{"apiPetition.retry" | translate}}
+          </button>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

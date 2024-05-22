@@ -4,12 +4,12 @@ import { combineLatest } from 'rxjs';
 import { compileClassMetadata } from '@angular/compiler';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { MealContainerComponent } from './components/meal-container/meal-container.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { OrdersPageComponent } from './pages/orders-page/orders-page.component';
+import { ordersGuard } from './guards/orders.guard';
 
 const routes: Routes = [
   { // Esto te redirije ahome si tinenes la ruta vacia
@@ -27,12 +27,13 @@ const routes: Routes = [
   },
   {
   path: 'orders',
-    component: OrdersPageComponent
+    component: OrdersPageComponent,
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'admin',
     component: AdminPageComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ ordersGuard ]
   },
   {
     path: '**',

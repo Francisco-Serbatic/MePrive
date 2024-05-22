@@ -13,5 +13,4 @@ export class ScrollInPageService {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-
 }

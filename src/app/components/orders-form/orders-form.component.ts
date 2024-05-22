@@ -4,16 +4,12 @@ import { Dish, createEmptyDish } from 'src/app/models/dish';
 import { DateManagerService } from 'src/app/services/date-manager.service';
 import { DishAPIService } from 'src/app/services/dish-api.service';
 
-
 @Component({
-  selector: 'app-extensible-form',
-  templateUrl: './extensible-form.component.html',
-  styleUrls: ['./extensible-form.component.scss']
+  selector: 'app-orders-form',
+  templateUrl: './orders-form.component.html',
+  styleUrls: ['./orders-form.component.scss']
 })
-export class ExtensibleFormComponent implements OnInit {
-  @Input({ required: true }) menuPrice!: number;
-  @Input({ required: true }) inputsArray!: Dish[];
-  @Input({ required: true }) day!: Date;
+export class OrdersFormComponent implements OnInit {
 
   @ViewChildren('inputs') inputs!: QueryList<ElementRef>;
 
@@ -32,15 +28,7 @@ export class ExtensibleFormComponent implements OnInit {
     this.myForm = new FormGroup({
       groupArray: new FormArray([])
     });
-    if (this.inputsArray != null)
-      {
-        this.inputsArray.forEach(element => {
-          const newGroup = new FormGroup({
-            label: new FormControl({value: element.name, disabled: true})
-          });
-          (this.myForm.get('groupArray') as FormArray).push(newGroup);
-        });
-      }
+ 
     
   }
 
@@ -51,19 +39,9 @@ export class ExtensibleFormComponent implements OnInit {
   onDeleteConfirmed(confirmed: boolean) {
     if (confirmed) {
       (this.myForm.get('groupArray') as FormArray).removeAt(this.inputToDelete);
-      this.apiConection.deleteDish(this.inputsArray[this.inputToDelete].dishId!).subscribe();
-      if (this.inputToDelete < this.inputsArray.length) this.inputsArray.splice(this.inputToDelete, 1)
     } 
   
     this.popUpShow = false; // Ocultar el popup después de recibir la confirmación
-  }
-
-  postMeal(dishData: Dish) {
-    this.apiConection.postNewDish(dishData).subscribe(
-      response => {
-        console.log('Respuesta del servidor:', response);
-      }
-    )
   }
   
   addMeal() {
@@ -72,7 +50,6 @@ export class ExtensibleFormComponent implements OnInit {
       label: new FormControl('')
     });
     (this.myForm.get('groupArray') as FormArray).push(newGroup);
-    this.inputsArray.push()
 
     setTimeout(() => {
       this.focusOnInput(this.inputs.length-1)
@@ -88,13 +65,7 @@ export class ExtensibleFormComponent implements OnInit {
     const input = (this.myForm.get('groupArray') as FormArray).at(index);
     var dishData: Dish = createEmptyDish();
     dishData.name = input.value.label;
-    dishData.date = this.dateManager.formatDate(this.day);
-    this.inputsArray.push(dishData);
 
-    if (input.value.label != "") {
-      this.postMeal(dishData);
-      input.disable();
-    }
   }
 
   removeMeal(index: number) {
@@ -114,3 +85,4 @@ export class ExtensibleFormComponent implements OnInit {
     this.inputValue = ''; // Clear the input value
   }
 }
+

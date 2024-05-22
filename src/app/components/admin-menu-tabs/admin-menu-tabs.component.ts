@@ -1,22 +1,24 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Dish } from 'src/app/models/dish';
 import { Menu } from 'src/app/models/menu';
 import { DateManagerService } from 'src/app/services/date-manager.service';
 import { DishAPIService } from 'src/app/services/dish-api.service';
 
-
 @Component({
-  selector: 'app-lunch-menu',
-  templateUrl: './lunch-menu.component.html',
-  styleUrls: ['./lunch-menu.component.scss']
+  selector: 'app-admin-menu-tabs',
+  templateUrl: './admin-menu-tabs.component.html',
+  styleUrls: ['./admin-menu-tabs.component.scss']
 })
-export class LunchMenuComponent implements OnInit {
-  meals!: Dish[];
-  editing = false
+export class AdminMenuTabsComponent implements OnInit {
+  apiDataReceived: boolean = false;
+  apiError: boolean = false;
   inputValue: string = '';
+  menuPrice: number[] = [];
+  week: Date[];
   tabs: string[] = [];
-  defaultValues: string[][] = []
+  defaultMeals: Dish[][] = []
   activeTab = 0;
 
   confirmingDelete!: boolean;
@@ -26,28 +28,12 @@ export class LunchMenuComponent implements OnInit {
   @ViewChildren('inputs') inputs!: QueryList<ElementRef>;
 
   constructor(private apiConection: DishAPIService, private formBuilder: FormBuilder, private dateManager: DateManagerService) {
-    const week: Date[] = dateManager.getNextWeek();
+    this.week = dateManager.getNextWeek();
 
     this.setDefaultInputs()
 
-    for (let i = 0; i < 1; i++) {
-      this.tabs.push(dateManager.getDayOfWeek(week[i]));
-
-      apiConection.getDishesByDate(week[i]).subscribe({
-        next: (meals) => {
-          var dishesOnMenu: string[] = [];
-          // if (meals != null) {
-          //   const menu: Menu = meals;
-          //   menu.dishes.forEach((dish) => {
-          //     dishesOnMenu.push(dish.name);
-          //   })
-          // }
-          console.log(meals)
-          //this.defaultValues.push(dishesOnMenu);
-        },
-        //error: (error) => console.error('Error:', error)
-      });
-
+    for (let i = 0; i < 5; i++) {
+      this.tabs.push(dateManager.getDayOfWeek(this.week[i]));
     }
   }
 
@@ -56,35 +42,73 @@ export class LunchMenuComponent implements OnInit {
     this.myForm = new FormGroup({
       groupArray: new FormArray([])
     });
-
-    // this.apiConection.searchAllDishes()
-    //   .subscribe({
-    //     next: (meals) => {
-    //       this.meals = meals;
-    //     },
-    //     error: (error) => console.error('Error:', error)
-    //   }
-    //   );
-
-    //const meals: string[] = ["mealExample", "test"];
-    //this.setFormArrayValues(this.tabs[0].content);
+    
   }
 
   get groupArrayControls() {
     return (this.myForm.get('groupArray') as FormArray).controls;
   }
 
+  private getDefaultMeals(date: Date): Dish[]{
+    for (const item of this.defaultMeals) {
+      if (item.length > 0) {
+          if (item[0].date == this.dateManager.formatDate(date)) {
+            return item;
+          }
+          
+      }
+  }
+    return []
+  }
+
+  private getMenuPrice(date: Date): Dish[]{
+    for (const item of this.defaultMeals) {
+      if (item.length > 0) {
+          if (item[0].date == this.dateManager.formatDate(date)) {
+            return item;
+          }
+          
+      }
+  }
+    return []
+  }
+  
   setDefaultInputs() {
-    this.apiConection.getWeekMenus().subscribe((data: Menu) => {
-      console.log('Resultado de la solicitud:', data);
-      const cosita: string[] = [];
-      if (data != null)
-        {
-          data.dishes.forEach((element) => {
-            cosita.push(element.name)
-          });
+    this.apiDataReceived = false;
+    this.apiError = false;
+    var dates: Date;
+    this.apiConection.getWeekMenus().subscribe({
+      next: (res) => {
+        var dayDishArray: Dish[] = [];
+        if (res instanceof Observable) {
+          var dateMenuReceibed: Date = dates
+          res.subscribe({
+            next: (menu) => {
+              if (menu != null) {
+                dayDishArray = menu.dishes;
+              } else {
+                this.apiConection.postNewMenu(5, dateMenuReceibed).subscribe({
+                  next: () => {}
+                })
+              }
+              this.defaultMeals.push(dayDishArray);
+              this.apiDataReceived = true;
+              this.apiError = false;
+            },
+            error: (e) => {
+              this.apiDataReceived = true;
+              this.apiError = true
+            }
+          })
+        } else if (res instanceof Date && res != null) {
+          dates = res
         }
-      this.defaultValues.push(cosita);
+      },
+      error: () => {
+        this.apiDataReceived = true;
+        this.apiError = true;
+      },
+
     });
   }
 
@@ -109,22 +133,8 @@ export class LunchMenuComponent implements OnInit {
       (this.myForm.get('groupArray') as FormArray).push(this.formBuilder.control(this.inputValue));
     } else {
     }
-    this.editing = false;
     this.inputValue = ''; // Clear the input value
   }
-
-  /* getMeals(): void {
-    this.jsonService.getMeals()
-      .subscribe({
-        next: (meals) => {
-          this.meals = meals;
-          console.log(meals)
-        },
-        error: (error) => console.error('Error:', error)
-      }
-      
-      );
-  } */
 
   scrollTabs(direction: number) {
     this.activeTab += direction;

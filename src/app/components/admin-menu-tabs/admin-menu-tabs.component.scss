@@ -1,0 +1,236 @@
+.deleteBtn {
+    background-color: transparent;
+    position: relative;
+    border: none;
+  
+    &::after {
+      content: attr(lang);
+      position: absolute;
+      left: 50%;
+      width: fit-content;
+      height: fit-content;
+      background-color: rgb(168, 7, 7);
+      padding: 4px 8px;
+      border-radius: 5px;
+      transition: .1s linear;
+      transition-delay: .2s;
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  
+    .icon {
+      transform: scale(1.2);
+      transition: .2s linear;
+    }
+  
+    &:hover>.icon {
+      transform: scale(1.5);
+    }
+  
+    &:hover>.icon path {
+      fill: rgb(168, 7, 7);
+    }
+  
+    &:hover::after {
+      visibility: visible;
+      opacity: 1;
+      left: 115%;
+    }
+  }
+  
+  .verticalFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scrollable-container {
+    max-height: 500px;
+    overflow-y: auto;
+    width: 600px
+  }
+  
+  .tabs-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    /* Permite el desplazamiento horizontal cuando hay demasiadas pestañas */
+  }
+  
+  .tab {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background-color: lightgray;
+  }
+  
+  .scroll-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .left {
+    margin-right: 10px;
+  }
+  
+  .right {
+    margin-left: 10px;
+  }
+  
+  .styled-input {
+    position: relative;
+    min-width: 100px;
+    cursor: text;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 16px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #d6d6e7;
+    border-radius: 3px;
+    color: rgb(35, 38, 59);
+    box-shadow: inset 0 1px 4px 0 rgb(119 122 175 / 30%);
+    overflow: auto;
+    transition: all 100ms ease-in-out;
+    margin: 4px;
+  }
+  
+  .styled-input:focus {
+    border-color: #3c4fe0;
+    box-shadow: 0 1px 0 0 rgb(35 38 59 / 5%);
+  }
+  
+  .resize-input {
+    min-width: 100px;
+    /* Set a minimum width */
+  }
+  
+  .resize-input::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+  }
+  
+  
+  
+  
+  
+  
+  .dot-spinner {
+    --uib-size: 2.8rem;
+    --uib-speed: .9s;
+    --uib-color: #183153;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--uib-size);
+    width: var(--uib-size);
+  }
+  
+  .dot-spinner__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot-spinner__dot::before {
+    content: '';
+    height: 20%;
+    width: 20%;
+    border-radius: 50%;
+    background-color: var(--uib-color);
+    transform: scale(0);
+    opacity: 0.5;
+    animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+  }
+  
+  .dot-spinner__dot:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  
+  .dot-spinner__dot:nth-child(2)::before {
+    animation-delay: calc(var(--uib-speed) * -0.875);
+  }
+  
+  .dot-spinner__dot:nth-child(3) {
+    transform: rotate(90deg);
+  }
+  
+  .dot-spinner__dot:nth-child(3)::before {
+    animation-delay: calc(var(--uib-speed) * -0.75);
+  }
+  
+  .dot-spinner__dot:nth-child(4) {
+    transform: rotate(135deg);
+  }
+  
+  .dot-spinner__dot:nth-child(4)::before {
+    animation-delay: calc(var(--uib-speed) * -0.625);
+  }
+  
+  .dot-spinner__dot:nth-child(5) {
+    transform: rotate(180deg);
+  }
+  
+  .dot-spinner__dot:nth-child(5)::before {
+    animation-delay: calc(var(--uib-speed) * -0.5);
+  }
+  
+  .dot-spinner__dot:nth-child(6) {
+    transform: rotate(225deg);
+  }
+  
+  .dot-spinner__dot:nth-child(6)::before {
+    animation-delay: calc(var(--uib-speed) * -0.375);
+  }
+  
+  .dot-spinner__dot:nth-child(7) {
+    transform: rotate(270deg);
+  }
+  
+  .dot-spinner__dot:nth-child(7)::before {
+    animation-delay: calc(var(--uib-speed) * -0.25);
+  }
+  
+  .dot-spinner__dot:nth-child(8) {
+    transform: rotate(315deg);
+  }
+  
+  .dot-spinner__dot:nth-child(8)::before {
+    animation-delay: calc(var(--uib-speed) * -0.125);
+  }
+  
+  @keyframes pulse0112 {
+    0%,
+    100% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+  
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }

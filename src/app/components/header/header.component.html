@@ -6,9 +6,9 @@
     </div>
     <nav class="menu">
       <ul>
-        <li><a translate="header.home"></a></li>
-        <li><a (click)="scrollTo('#mealContainer')" translate="header.menus"></a></li>
-        <li><a translate="header.orders"></a></li>
+        <li><a routerLink="/home" translate="header.home"></a></li>
+        <li><a routerLink="/home" (click)="scrollTo('#mealContainer')" translate="header.menus"></a></li>
+        <li><a routerLink="/orders" translate="header.orders"></a></li>
         <li><a (click)="scrollTo('#footer')" translate="header.discover"></a></li>
       </ul>
     </nav>

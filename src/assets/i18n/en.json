@@ -43,6 +43,10 @@
   "adminPage": {
     "logout": "Log out"
   },
+  "apiPetition": {
+    "error": "Something has gone wrong",
+    "retry": "Retry"
+  },
   "menu": {
     "menuName": "Menu name",
     "date": "Date",
