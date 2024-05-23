@@ -8,7 +8,7 @@
 <div class="tab-content verticalFlex" *ngFor="let tab of tabs; let i = index" [class.active]="i === activeTab">
   <div *ngIf="i === activeTab">
     <app-extensible-form *ngIf="apiDataReceived && !apiError; else loadingData" [inputsArray]="getDefaultMeals(week[i])"
-      [day]="week[i]" [menuPrice]></app-extensible-form>
+      [day]="week[i]" [menuPrice]="getMenuPrice(week[i])"></app-extensible-form>
 
     <ng-template #loadingData>
       <div *ngIf="!apiError; else apiErrorOcurred" class="dot-spinner">

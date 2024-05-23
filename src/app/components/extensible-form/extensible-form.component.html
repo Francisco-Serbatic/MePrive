@@ -1,7 +1,11 @@
 <form [formGroup]="myForm" class="scrollable-container verticalFlex" style="position: relative;">
+  <div class="menuPrice">
+    <label style="display: flex;">{{'adminPage.menuPrice' | translate}}</label>
+    <input type="number" value="{{menuPrice}}" style="max-width: 4rem;" #myInput (input)="updateMenuPrice(myInput.value)"/>
+  </div>
     <div formArrayName="groupArray">
       <div *ngFor="let input of groupArrayControls; let i = index" [formGroupName]="i">
-        <label>{{'menu.dishInputPlaceholder' | translate}}: </label>
+        <label style="margin-right: 5px;">{{'menu.dishInputPlaceholder' | translate}}: </label>
         <input type="text" formControlName="label" (blur)="onBlurInput(i)" #inputs class="styled-input resize-input"
         [ngStyle]="{ 'background-color': input.disabled ? '#efefef' : 'white' }" (keydown.enter)="addMeal()">
         <button class="deleteBtn" type="button" (click)="removeMeal(i)" lang="{{'menu.deleteBtn' | translate}}">

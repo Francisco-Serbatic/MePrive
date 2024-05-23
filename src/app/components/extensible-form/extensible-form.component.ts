@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Dish, createEmptyDish } from 'src/app/models/dish';
+import { Menu } from 'src/app/models/menu';
 import { DateManagerService } from 'src/app/services/date-manager.service';
 import { DishAPIService } from 'src/app/services/dish-api.service';
 
@@ -101,6 +102,13 @@ export class ExtensibleFormComponent implements OnInit {
     this.inputToDelete = index;
     this.popUpShow = true;
     // (this.myForm.get('groupArray') as FormArray).removeAt(index);
+  }
+
+  updateMenuPrice(value: string){
+    if (value != ""){
+      var price = parseInt(value)
+      this.apiConection.postNewMenu(price, this.day).subscribe()
+    }
   }
   
   saveAndExit() {

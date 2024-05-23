@@ -15,10 +15,9 @@ export class AdminMenuTabsComponent implements OnInit {
   apiDataReceived: boolean = false;
   apiError: boolean = false;
   inputValue: string = '';
-  menuPrice: number[] = [];
   week: Date[];
   tabs: string[] = [];
-  defaultMeals: Dish[][] = []
+  menus: Menu[] = []
   activeTab = 0;
 
   confirmingDelete!: boolean;
@@ -42,37 +41,34 @@ export class AdminMenuTabsComponent implements OnInit {
     this.myForm = new FormGroup({
       groupArray: new FormArray([])
     });
-    
+
   }
 
   get groupArrayControls() {
     return (this.myForm.get('groupArray') as FormArray).controls;
   }
 
-  private getDefaultMeals(date: Date): Dish[]{
-    for (const item of this.defaultMeals) {
-      if (item.length > 0) {
-          if (item[0].date == this.dateManager.formatDate(date)) {
-            return item;
-          }
-          
+  getDefaultMeals(date: Date): Dish[] {
+    for (const menu of this.menus) {
+      if (menu.dishes.length > 0) {
+        if (menu.dishes[0].date == this.dateManager.formatDate(date)) {
+          return menu.dishes;
+        }
+
       }
-  }
+    }
     return []
   }
 
-  private getMenuPrice(date: Date): Dish[]{
-    for (const item of this.defaultMeals) {
-      if (item.length > 0) {
-          if (item[0].date == this.dateManager.formatDate(date)) {
-            return item;
-          }
-          
+  getMenuPrice(date: Date): number {
+    for (const menu of this.menus) {
+      if (menu.date == this.dateManager.formatDate(date)) {
+        return menu.totalPrice;
       }
+    }
+    return 5.5
   }
-    return []
-  }
-  
+
   setDefaultInputs() {
     this.apiDataReceived = false;
     this.apiError = false;
@@ -85,13 +81,12 @@ export class AdminMenuTabsComponent implements OnInit {
           res.subscribe({
             next: (menu) => {
               if (menu != null) {
-                dayDishArray = menu.dishes;
+                this.menus.push(menu)
               } else {
                 this.apiConection.postNewMenu(5, dateMenuReceibed).subscribe({
-                  next: () => {}
+                  next: () => { }
                 })
               }
-              this.defaultMeals.push(dayDishArray);
               this.apiDataReceived = true;
               this.apiError = false;
             },

@@ -41,7 +41,8 @@
     "loginButton": "Go to Admin Page"
   },
   "adminPage": {
-    "logout": "Log out"
+    "logout": "Log out",
+    "menuPrice": "Menu price: "
   },
   "apiPetition": {
     "error": "Something has gone wrong",

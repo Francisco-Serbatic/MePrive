@@ -41,7 +41,8 @@
     "loginButton": "Ir a la página de administrador"
   },
   "adminPage": {
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "menuPrice": "Precio del menu: "
   },
   "menu": {
     "menuName": "Nombre del menú",
