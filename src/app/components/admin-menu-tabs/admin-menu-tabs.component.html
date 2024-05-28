@@ -1,6 +1,6 @@
 <div class="tabs-container verticalFlex">
-  <div class="tabs">
-    <div *ngFor="let tab of tabs; let i = index" class="tab" [class.active]="i === activeTab" (click)="changeTab(i)">
+  <div  class="tabs">
+    <div *ngFor="let tab of tabs; let i = index" class="tab" [class.active]="i === activeTab" (click)="changeTab(i)" #firstTab>
       {{ tab | translate }}
     </div>
   </div>

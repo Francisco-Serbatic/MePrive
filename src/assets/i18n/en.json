@@ -27,7 +27,8 @@
     "home": "Home",
     "menus": "Menus",
     "orders": "My orders",
-    "discover": "Discover Us"
+    "discover": "Discover Us",
+    "logout": "Log Out"
   },
   "footer": {
     "menu": "Try our menu",

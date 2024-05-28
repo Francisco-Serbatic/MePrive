@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Dish } from 'src/app/models/dish';
@@ -20,10 +20,11 @@ export class AdminMenuTabsComponent implements OnInit {
   menus: Menu[] = []
   activeTab = 0;
 
-  confirmingDelete!: boolean;
   inputToDelete: number = -1;
 
   myForm!: FormGroup;
+
+  @ViewChild('firstTab', { static: true }) firstTab!: ElementRef;
   @ViewChildren('inputs') inputs!: QueryList<ElementRef>;
 
   constructor(private apiConection: DishAPIService, private formBuilder: FormBuilder, private dateManager: DateManagerService) {
@@ -41,8 +42,8 @@ export class AdminMenuTabsComponent implements OnInit {
     this.myForm = new FormGroup({
       groupArray: new FormArray([])
     });
-
   }
+
 
   get groupArrayControls() {
     return (this.myForm.get('groupArray') as FormArray).controls;
@@ -89,6 +90,8 @@ export class AdminMenuTabsComponent implements OnInit {
               }
               this.apiDataReceived = true;
               this.apiError = false;
+              this.reloadFirstTab()
+
             },
             error: (e) => {
               this.apiDataReceived = true;
@@ -105,6 +108,15 @@ export class AdminMenuTabsComponent implements OnInit {
       },
 
     });
+  }
+
+  reloadFirstTab(): void {
+    const currentTab = this.activeTab;
+    this.activeTab = currentTab === 0 ? 1 : 0;
+
+    setTimeout(() => {
+      this.activeTab = 0;
+    }, 0);
   }
 
   setFormArrayValues(values: string[]) {

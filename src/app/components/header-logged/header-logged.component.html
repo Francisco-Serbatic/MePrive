@@ -1,0 +1,17 @@
+    <header class="header">
+        <div class="container">
+          <div class="logo">
+            <img src="{{ logoUrl }}" alt="Logo">
+          </div>
+          <nav class="menu">
+            <ul>
+              <li class="headerText"><a routerLink="/home" translate="header.home"></a></li>
+              <li class="headerText"><a routerLink="/home" (click)="scrollTo('#mealContainer')" translate="header.menus"></a></li>
+              <li class="headerText"><a class="headerText" routerLink="/orders" translate="header.orders"></a></li>
+              <li class="headerText"><a (click)="logOut()" translate="header.logout"></a></li>
+              <li class="headerText"><a (click)="scrollTo('#footer')" translate="header.discover"></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      

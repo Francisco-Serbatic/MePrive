@@ -25,6 +25,7 @@ import { ExtensibleFormComponent } from './components/extensible-form/extensible
 import { AdminMenuTabsComponent } from './components/admin-menu-tabs/admin-menu-tabs.component';
 import { MealContainerComponent } from './components/meal-container/meal-container.component';
 import { OrdersFormComponent } from './components/orders-form/orders-form.component';
+import { HeaderLoggedComponent } from './components/header-logged/header-logged.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ExtensibleFormComponent,
     AdminMenuTabsComponent,
     MealContainerComponent,
-    OrdersFormComponent
+    OrdersFormComponent,
+    HeaderLoggedComponent
   ],
   imports: [
     BrowserModule,

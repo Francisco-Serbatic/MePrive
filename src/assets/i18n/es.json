@@ -27,7 +27,8 @@
     "home": "Inicio",
     "menus": "Menús",
     "orders": "Mis pedidos",
-    "discover": "Descrúbrenos"
+    "discover": "Descrúbrenos",
+    "logout": "Cerrar sesión"
   },
   "footer": {
     "menu": "Prueba nuestro menú",

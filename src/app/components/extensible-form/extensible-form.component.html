@@ -8,6 +8,10 @@
         <label style="margin-right: 5px;">{{'menu.dishInputPlaceholder' | translate}}: </label>
         <input type="text" formControlName="label" (blur)="onBlurInput(i)" #inputs class="styled-input resize-input"
         [ngStyle]="{ 'background-color': input.disabled ? '#efefef' : 'white' }" (keydown.enter)="addMeal()">
+
+        <input type="number" formControlName="price" (blur)="onBlurInput(i)" #inputs class="styled-input resize-input small-input"
+        [ngStyle]="{ 'background-color': input.disabled ? '#efefef' : 'white' }" (keydown.enter)="addMeal()">
+
         <button class="deleteBtn" type="button" (click)="removeMeal(i)" lang="{{'menu.deleteBtn' | translate}}">
           <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" class="icon">
             <path transform="translate(-2.5 -1.25)"
@@ -17,6 +21,7 @@
         </button>
       </div>
     </div>
+
     <app-confirmation-component [title]="'Confirmar eliminación'"
       [message]="'¿Estás seguro de que deseas eliminar este elemento?'"
       [isVisible]="popUpShow"

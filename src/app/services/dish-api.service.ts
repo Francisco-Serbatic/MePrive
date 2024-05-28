@@ -69,4 +69,9 @@ export class DishAPIService {
     return this.http.delete(this.dishUrl+"/delete/"+id)
   }
 
+  putDish(body: any) {
+    console.log(body)
+    return this.http.put(this.dishUrl+"/edit", body)
+  }
+
 }

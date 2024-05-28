@@ -37,7 +37,9 @@ export class ExtensibleFormComponent implements OnInit {
       {
         this.inputsArray.forEach(element => {
           const newGroup = new FormGroup({
-            label: new FormControl({value: element.name, disabled: true})
+            label: new FormControl({value: element.name, disabled: false}),
+            price: new FormControl({value: element.price, disabled: false})
+
           });
           (this.myForm.get('groupArray') as FormArray).push(newGroup);
         });
@@ -47,6 +49,9 @@ export class ExtensibleFormComponent implements OnInit {
 
   get groupArrayControls() {
     return (this.myForm.get('groupArray') as FormArray).controls;
+  }
+  get formArray() : FormArray {
+    return this.myForm.get('inputs') as FormArray;
   }
 
   onDeleteConfirmed(confirmed: boolean) {
@@ -70,7 +75,9 @@ export class ExtensibleFormComponent implements OnInit {
   addMeal() {
     this.editing = true;
     const newGroup = new FormGroup({
-      label: new FormControl('')
+      label: new FormControl(''),
+      price: new FormControl('')
+
     });
     (this.myForm.get('groupArray') as FormArray).push(newGroup);
     this.inputsArray.push()
@@ -88,13 +95,19 @@ export class ExtensibleFormComponent implements OnInit {
   onBlurInput(index: number) {
     const input = (this.myForm.get('groupArray') as FormArray).at(index);
     var dishData: Dish = createEmptyDish();
-    dishData.name = input.value.label;
-    dishData.date = this.dateManager.formatDate(this.day);
-    this.inputsArray.push(dishData);
-
-    if (input.value.label != "") {
+    
+    if (input.value.label != "" && index==(this.myForm.get('groupArray') as FormArray).length-1) {
+      dishData.name = input.value.label;
+      dishData.date = this.dateManager.formatDate(this.day);
+      dishData.price = input.value.price;
+      this.inputsArray.push(dishData);
       this.postMeal(dishData);
-      input.disable();
+    } else if (input.value.label != ""){
+      dishData.dishId = this.inputsArray[index].dishId
+      dishData.name = input.value.label;
+      dishData.date = this.dateManager.formatDate(this.day);
+      dishData.price = input.value.price;
+      this.apiConection.putDish(dishData).subscribe();
     }
   }
 

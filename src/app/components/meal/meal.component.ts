@@ -11,8 +11,10 @@ import { GetImageService } from 'src/app/services/get-image.service';
   styleUrls: ['./meal.component.scss']
 })
 export class MealComponent implements OnInit {
+
   @Input({ required: true }) mealName!: string;
   @Input({ required: true }) mealPrice!: number;
+
   // 10 images: bowl, egg, fish, glass, iceCream, pipe, pizza, plate, salad, sandwich
   mealImageName: string = "./../../../assets/svgs/plate.svg";
   mealImageMealTypeRelation: MealTypeGrouper = {
@@ -46,9 +48,8 @@ export class MealComponent implements OnInit {
             console.log("Te has inventado la receta colega")
           }
           else {
-            console.log(mealTypes)
-            this.setMealImageName(mealTypes.hits[1].recipe.dishType.toString());
-            let healthLabels = mealTypes.hits[1].recipe.healthLabels;
+            this.setMealImageName(mealTypes.hits[0].recipe.dishType.toString());
+            let healthLabels = mealTypes.hits[0].recipe.healthLabels;
             this.allergiesFounded = this.allergenFreeFinder(healthLabels);
             this.tipesOfDiet[0] = this.typeOfDietFinder(healthLabels);
             console.log(this.tipesOfDiet[0]);
